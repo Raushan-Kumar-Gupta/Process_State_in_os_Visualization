@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automata</title>
+    <link rel="stylesheet" href="./toc.css">
+</head>
+<body>
+    <div id="container">
+        <div id="automata">
+            <div class="arrow" id="q1-q2">
+                <div class="caption">Yes</div>
+                <div class="line"></div>
+                <div class="direction"></div>
+            </div>
+            <div class="arrow" id="q2-q3">
+                <div class="caption">Yes</div>
+                <div class="line"></div>
+                <div class="direction"></div>
+            </div>
+            <div class="arrow" id="q3-q4">
+                <div class="caption">Yes</div>
+                <div class="line"></div>
+                <div class="direction"></div>
+            </div>
+            <div class="arrow vertical-down" id="q2-q5">
+                <div class="caption">No</div>
+                <div class="line" style="width:40px"></div>
+                <div class="direction"></div>
+            </div>
+            <div class="arrow vertical-up" id="q5-q2">
+                <div class="caption">Yes</div>
+                <div class="line" style="width:35px"></div>
+                <div class="direction"></div>
+            </div>
+            <div class="arrow vertical-down" id="q3-q6">
+                <div class="caption">i/o?</div>
+                <div class="line"  style="width:40px"></div>
+                <div class="direction"></div>
+            </div>
+            <div class="arrow" id="q6-q2" >
+                <div class="caption" style="transform:rotate(180deg)">Yes</div>
+                <div class="line" style="width:140px"></div>
+                <div class="direction"></div>
+            </div>
+            <div class="arrow horizontal-back" id="q3-q2">
+                <div class="caption" style="transform:translate(0 ,30px) rotate(180deg)">Process Interrupt</div>
+                <div class="line"></div>
+                <div class="direction"></div>
+            </div>
+            <div class="arrow vertical-down" id="q6-q7">
+                <div class="caption">hp?</div>
+                <div class="line" style="width:40px"></div>
+                <div class="direction"></div>
+            </div>
+            <div class="arrow vertical-up" id="q7-q6">
+                <div class="caption">Yes</div>
+                <div class="line" style="width:40px"></div>
+                <div class="direction"></div>
+            </div>
+            <div class="arrow" id="q6-q8">
+                <div class="caption">Time-up</div>
+                <div class="line" style="width:130px"></div>
+                <div class="direction"></div>
+            </div>
+            <div class="arrow" id="start">
+                <div class="caption"></div>
+                <div class="line" style="border-color:yellow;"></div>
+                <div class="direction" style="border-color:yellow;"></div>
+            </div>
+            <div class="arrow" id="q7-q5">
+                <div class="caption" style="transform:rotate(180deg)">i/o complete</div>
+                <div class="line"  style="width:120px"></div>
+                <div class="direction"></div>
+            </div>
+            <div class="arrow circle-arrow" id="q3-loop">
+                <div class="caption">No</div>
+                <div class="line"></div>
+                <div class="direction"></div>
+            </div>
+            <div class="arrow circle-arrow" id="q6-loop">
+                <div class="caption" style="transform: translate(-20px, -10px) rotate(-100deg);">No</div>
+                <div class="line"></div>
+                <div class="direction"></div>
+            </div>
+            <div class="arrow circle-arrow" id="q5-loop">
+                <div class="caption">No</div>
+                <div class="line"></div>
+                <div class="direction"></div>
+            </div>
+            <div class="arrow circle-arrow" id="q7-loop">
+                <div class="caption" style="transform:translate(-20px, -30px) rotate(140deg)">No</div>
+                <div class="line"></div>
+                <div class="direction"></div>
+            </div>
+            <div class="arrow circle-arrow" id="q1-loop">
+                <div class="caption">No</div>
+                <div class="line"></div>
+                <div class="direction"></div>
+            </div>
+            <div id="gridContainer">
+
+                <div class="state" id="q1"><p class="stateName">New</p></div>
+                <div class="state" id="q2"><p class="stateName">Ready</p></div>
+                <div class="state" id="q3"><p class="stateName">Running</p></div>
+                <div class="state final-state" id="q4"><p class="stateName">Exit</p></div>
+                <div class="state" id="q5"><p class="stateName">Ready Suspended</p></div>
+                <div class="state" id="q6"><p class="stateName">Waiting</p></div>
+                <div class="state" id="q7"><p class="stateName">Wait Suspended</p></div>
+                <div class="state dead-state" id="q8"><p class="stateName">Terminated</p></div>
+            </div>
+        </div>
+        <div id="questionsAnswers">
+            <h1>Process Scheduling and Execution States by using Automata theory.</h1><hr><hr>
+            <button id="start-btn">Start</button>
+            <div id="questions">
+                <div id="question1">
+                    <h1>Please Enter the choice:</h1>
+                    <h2 id="query1">Do you want to create a process?</h2><br>
+                    <button id="yes1" class="green-btn">Yes</button>
+                    <button id="no1" class="red-btn">No</button>
+                </div>
+                <div id="question2">
+                    <h1>Please Enter the choice:</h1>
+                    <h2 id="query2">Hey Scheduler, Is it my turn to run ?</h2><br>
+                    <button id="yes2" class="green-btn">Yes</button>
+                    <button id="no2" class="red-btn">No</button>
+                </div>
+                <div id="question3">
+                    <h1>Please Enter the choice:</h1>
+                    <h2 id="query3">Is my execution fully finished?</h2><br>
+                    <button id="yes3" class="green-btn">Yes</button>
+                    <button id="no3" class="red-btn">No</button>
+                    <button id="io-interrupt" class="yellow-btn">I/o Interrupt</button>
+                    <button id="proc-interrupt" class="blue-btn" style="width:fit-content">Process Interrupt</button>
+                </div>
+                <div id="question4">
+                    <h1>Please Enter the choice:</h1>
+                    <h2 id="query4">Is CPU Available?</h2><br>
+                    <button id="yes4" class="green-btn">Yes</button>
+                    <button id="no4" class="red-btn">No</button>
+                </div>
+                <div id="question5">
+                    <h1>Please Enter the choice:</h1>
+                    <h2 id="query5">I/O Complete?</h2><br>
+                    <button id="yes5" class="green-btn">Yes</button>
+                    <button id="no5" class="red-btn">No</button>
+                    <button id="hp-interrupt" class="yellow-btn" style="min-width:fit-content">HP Process Incoming</button>
+                </div>
+                <div id="question6">
+                    <h1>Please Enter the choice:</h1>
+                    <h2 id="query6">Is Memory free? shall I return?</h2><br>
+                    <button id="yes6" class="green-btn">Yes</button>
+                    <button id="no6" class="red-btn">No</button>
+                    <button id="io-complete" class="yellow-btn">I/O Complete</button>
+                </div>
+            </div>
+            <h1>Comments</h1><hr>
+            <div id="answers">
+                <p id="comment"></p>
+                
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let question_box = document.getElementById('questions')
+    let start_btn = document.getElementById('start-btn')
+    let wait_time = 0
+
+    const text_comment = (str) =>{
+        document.getElementById('comment').textContent = str
+    }
+
+    const hideQuestions= ()=>{
+        for(let i = 1; i < 7; i++){
+            document.getElementById("question"+i).style.display = 'none'
+        }
+    }
+    const q8 = (prev_state)=>{
+        hideQuestions()
+        prev_state.style.backgroundColor = '#bd81f5'
+        current_state = document.getElementById('q8')
+        current_state.style.backgroundColor = '#1c3e1c'
+        setTimeout(()=>{
+            current_state.style.backgroundColor = '#bc3737'
+        },700)
+        setTimeout(() => {
+            alert("Dead State Reached. Process is terminated")
+            location.reload()
+        }, 1000);
+    }
+    const q7 = (prev_state) =>{
+        hideQuestions()
+        document.getElementById('question6').style.display = 'block'
+        prev_state.style.backgroundColor = '#bd81f5'
+        current_state = document.getElementById('q7')
+        setTimeout(() => {
+            current_state.style.backgroundColor = '#1c3e1c'
+        }, 300);
+        document.getElementById('yes6').onclick = ()=>{
+            text_comment("Memory free found. But i/o response still not received. Now in waiting state waiting for i/o response.")
+            q6(current_state)}
+        document.getElementById('no6').onclick = ()=>{
+            text_comment("Memory still not free and i/o response also not received. Still in Wait-Suspended state")
+            q7(current_state)}
+        document.getElementById('io-complete').onclick = ()=>{
+            text_comment("I/O response recieved but memory is still occupied by high-priority process. Now in ready-suspended state waiting for cpu.")
+            q5(current_state)}
+    }
+    const q6 = (prev_state)=>{
+        hideQuestions()
+        document.getElementById('question5').style.display = 'block'
+        prev_state.style.backgroundColor = '#bd81f5'
+        current_state = document.getElementById('q6')
+        setTimeout(() => {
+            current_state.style.backgroundColor = '#1c3e1c'
+        }, 300);
+        document.getElementById('yes5').onclick = ()=>{
+            text_comment("Successfully Completed taking i/o response. Now in ready state waiting for its turn from Scheduler.")
+            q2(current_state)}
+        document.getElementById('no5').onclick = ()=>{
+            wait_time = wait_time + 1
+            if(wait_time < 5){
+                text_comment("Waiting for I/O to complete. Still in Waiting State.")
+                q6(current_state)
+            }
+            else{
+                text_comment("Waiting time has exceeded limit time. Now the process is being terminated and reaching dead state.")
+                q8(current_state)
+            }
+        }
+        document.getElementById('hp-interrupt').onclick = ()=>{
+            text_comment("A High Priority Process is incoming. Freeing the cpu for the high-priority process by sending this waiting process to wait-suspended state. Now in Wait-suspended state.")
+            q7(current_state)}
+    }
+    const q5 = (prev_state) =>{
+        hideQuestions()
+        document.getElementById('question4').style.display = 'block'
+        prev_state.style.backgroundColor = '#bd81f5'
+        current_state = document.getElementById('q5')
+        setTimeout(() => {
+            current_state.style.backgroundColor = '#1c3e1c'
+        }, 300);
+        document.getElementById('yes4').onclick = ()=>{
+            text_comment("CPU now available. Now in ready state waiting for it's turn from the scheduler.")
+            q2(current_state)}
+        document.getElementById('no4').onclick = ()=>{
+            text_comment("CPU currently not free. Still in Ready-Suspended State.")
+            q5(current_state)}
+    }
+
+    const q4 = (prev_state)=>{
+        hideQuestions()
+        prev_state.style.backgroundColor = '#bd81f5'
+        current_state = document.getElementById('q4')
+        current_state.style.backgroundColor = '#1c3e1c'
+        
+        setTimeout(() => {
+            alert("Successfully reached Final State. Completed Execution of the process.")
+            location.reload()
+        }, 1000);
+    }
+
+    const q3 = (prev_state) =>{
+        hideQuestions()
+        document.getElementById('question3').style.display = 'block'
+        prev_state.style.backgroundColor = '#bd81f5'
+        current_state = document.getElementById('q3')
+        setTimeout(() => {
+            current_state.style.backgroundColor = '#1c3e1c'
+        }, 300);
+        document.getElementById('yes3').onclick = ()=>{
+            text_comment("Process has finished execution. Now in exit stage. Successfully reached final state.")
+            q4(current_state)}
+        document.getElementById('no3').onclick = ()=>{
+            text_comment("process is still executing. Still in running state.")
+            q3(current_state)}
+        document.getElementById('io-interrupt').onclick = () =>{
+            text_comment("I/O -input/output request interrupt has come. Now in waiting state waiting to get I/O response.")
+            q6(current_state)}
+        document.getElementById('proc-interrupt').onclick = () =>{
+            text_comment("This process' turn is now over for the time being. Now in ready state waiting for it's turn again.")
+            q2(current_state)}
+    }
+
+    const q2 = (prev_state)=>{
+        hideQuestions()
+        document.getElementById('question2').style.display = 'block'
+        prev_state.style.backgroundColor = '#bd81f5'
+        current_state = document.getElementById('q2')
+        current_state.style.backgroundColor = '#1c3e1c'
+        document.getElementById('yes2').onclick = ()=>{
+            text_comment("Scheduler allocated the CPU for process. Process now in running state.")
+            q3(current_state)}
+        document.getElementById('no2').onclick = ()=>{
+            text_comment("Scheduler decided that it was not this process' turn. Process now in Ready-Suspended State")
+            q5(current_state)}
+    }
+    const q1 =() =>{
+        hideQuestions()
+        document.getElementById('question1').style.display = 'block'
+        current_state = document.getElementById('q1')
+        current_state.style.backgroundColor = '#bd81f5'
+        setTimeout(() => {
+            current_state.style.backgroundColor = '#1c3e1c'
+        }, 300);
+
+        
+
+        document.getElementById('yes1').onclick = () => {text_comment("Process has been created. Now the process is in the ready state."); q2(current_state)}
+        document.getElementById('no1').onclick = () => {
+            text_comment("Please choose to make a process to proceed forward.")
+            q1()}
+    }
+    question_box.style.display = 'none'
+    start_btn.onclick = ()=>{
+        start_btn.style.display = 'none'
+        question_box.style.display = 'block'
+        text_comment("Started the Automata.")
+        q1()
+    }
+</script>
+</html>
